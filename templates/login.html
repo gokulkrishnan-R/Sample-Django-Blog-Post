@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+<title>Login-Page</title>
+
+{% endblock %}
+
+
+{% block body %}
+
+<form action="/login/" method="POST"> 
+  {{ forms.error }}
+    {% csrf_token %}
+    <div style="width: 50%; padding: 50px;">
+      <h1 class="h1">Login:</h1>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="floatingInput" name="username" placeholder="your name">
+      <label for="floatingInput">User Name:</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+      <label for="floatingPassword">Password</label>
+    </div>
+    <br>
+    <button onclick="history.back()" type="submit" class="btn btn-primary">Submit</button>
+    <br>
+    <br>
+    <h6><small>Don't have an account? <a href="/register/"> Create it!</a></small></h6>
+  </div>
+
+  
+    <!--  
+    <div class="container mt-5">
+    <div class="mb-4">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" class="form-control" id="username" name="username">
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" name="password">
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+  -->
+  </form>
+
+{% endblock %}
+

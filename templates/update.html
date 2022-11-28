@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Update Post</title>
+{% endblock %}
+
+{% block body %}
+
+<hr>
+
+<h1>Edit Post:</h1>
+
+<form action="updaterecord/{{ myobjects.id }}" method="post">
+    
+    {% csrf_token %}
+
+    <label for="title">Title:</label>
+    <input class="form-control" type="search" name="title" id="title" value="{{ myobjects.title }}" aria-label="Search">
+    <br>
+    <label for="content">Edit Post:</label>
+    <input textarea class="form-control" name="content" id="content" cols="40" rows="10" value="{{ myobjects.content }}"></textarea>
+    <br>
+    <label for="author">Author:</label>
+    <input class="form-control" type="search" name="author" id="author" value="{{ myobjects.author }}" aria-label="Search">
+    <br>
+    <label for="id_image">Image:</label>        
+    <input type="file" name="image" accept="image/*" id="id_image">
+    <br>
+    <br>
+    <input class="btn btn-secondary" type="submit" value="Save">
+    
+</form>
+
+{% endblock %}

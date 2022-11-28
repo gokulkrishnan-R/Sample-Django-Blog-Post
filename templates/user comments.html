@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Comments</title>
+{% endblock %}
+
+{% block body %}
+
+<hr>
+
+<h1>Comments:</h1>
+
+    <form action="add_user_comments/{{ mypost.id }}" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        <label for="Name">Name:</label>
+        <input class="form-control" type="search" name="Name" id="Name" aria-label="Search">
+        <label for="comment_body">Write Comment:</label>
+        <textarea class="form-control" name="comment_body" id="comment_body" cols="40" rows="10"></textarea>
+        <br>
+        <label for="author">Comment By:</label>
+        <input class="form-control" type="search" name="author" id="author" aria-label="Search">
+        <br>
+        <input class="btn btn-primary" type="submit" value="Post this comment">
+        <br>
+        <br>
+    
+    </form>
+{% endblock %}

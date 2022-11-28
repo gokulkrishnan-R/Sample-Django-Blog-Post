@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<title>All Posts</title>
+
+{% block user %}
+{% if request.user == request.user %}
+<a style="position: absolute; right: 400px;" ="navbar-item-active" href="#">Hello {{ request.user }}</a>
+{% endif %}
+{% endblock %}
+
+{% endblock %}
+
+{% block body %}
+
+<br>    
+    <h1 style="display: inline; ">All Posts</h1>
+    <a class="btn btn-success float-end" href="newpost/"> +New Post</a>
+    <a class="btn btn-success float-end" href="/login/"> Login</a>
+    <a class="btn btn-success float-end" href="/register/"> Sign-Up</a>
+    <a class="btn btn-success float-end" href="/logout/"> Log-Out</a>
+<hr>
+<br>
+
+<form action="newpost/" method="POST">
+    {% csrf_token %}
+    {% for i in objects %}
+<div class="heading" style="display: #160;">
+    <div class="container">
+        {% if i.title %}
+    <div class="spacing">
+    <h5>Title: {{ i.title }}</h5>
+    </div>
+</div>
+    <br>
+{% else %}
+<h5>No Title</h5>
+{% endif %}
+
+{% if i.image %}
+
+<img src="static 'assests/media/profile_pics/{{ i.image }}' " class="card-img-top" alt="..." height="250px">
+{% endif %}
+
+
+{% if i.content %}
+
+    <div class="container">
+        <p><h5>Post: {{ i.content }}</h5></div></p> 
+{% else %}
+    <h3>No Content</h3>
+{% endif %}
+
+{% if i.author %}
+    <div class="container">
+        <small>Posted by: {{ i.author }} on {{ i.posted_on }}</h3></small>
+    </div>
+{% else %}
+    <div class="container">
+        <h3>No Author:(N/A)</h3>
+    </div>
+{% endif %}
+<br>
+
+<div class="container">
+    <small><a class="btn btn-primary" href="update/{{ i.id }}">Update</a></small>
+    <a class="btn btn-danger"href="delete/{{ i.id }}">Delete</a>
+</div>
+
+<!-- <a class="btn btn-light" href="comments">Comment</a> -->
+<hr>
+    </div>
+    <br>
+</div>
+
+    {% endfor %}
+    <div class="container">
+        <h4><a href="login_user/">Login</a> to post comments below.</h4>
+        <small>Don't have an account? No problem you can <a href="/register/">create here!</a></small>            
+    </div>
+    {% endblock %}
+
+</form>

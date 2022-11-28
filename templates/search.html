@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} Edit Page {% endblock %}
+
+{% block css %}
+{% endblock %}
+{% block body %}
+{% if searched %}
+
+<div class="container mt-5 mb-3">
+
+    <div class="row">
+        {% for i in blogs %}
+        <div class="col-lg-4 my-4">
+            <div class="card shadow" style="width: 20rem; height: 33rem;">
+                <div class="card-body">
+                  <h5 class="card-title">{{i.title}} <br><small>by {{i.author}}</small></h5>
+                  <p class="card-text">{{i.content| truncatechars:210}} </p>
+                  <a href="/posts/" class="btn btn-primary">Read More</a>
+                </div>
+              </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% elif i != blogs %}
+<h1>Error 404!</h1>
+{% else %}
+<h1>You forgot to search</h1>
+{% endif %}
+{% endblock %}
