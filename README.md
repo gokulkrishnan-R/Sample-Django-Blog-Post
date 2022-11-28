@@ -1,1 +1,1 @@
-# Sample-Django-Blog-Post
+# Simple-Django-Blog-Post
